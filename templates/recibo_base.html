@@ -1,23 +1,21 @@
 <div id="encabezado">
     <div class="logo">
-        <img src="{{ url_for('static', filename='logo.png', _external=true) }}">
+        <img src="{{ url_for('static', filename='logo.png', _external=true) }}">  {{cooperativa['nombre']}}
     </div>
-
     <div id="recibo">
         <div class="recibo-left">
-            Recibo de anticipo de retornos a cuenta de excedentes
+            RECIBO
         </div>
         <div class="recibo-right">
-            N° 0001 - {{retiro.numero}} 
+            N° 0001 - {{ '{:0>8d}'.format(retiro.numero) }} 
         </div>
     </div>
     <div class='copia-numero'>
-      N° 0001 - {{retiro.numero}} 
+      N° 0001 - {{ '{:0>8d}'.format(retiro.numero) }}  
     </div>
 </div> <!-- cierra #encabezado -->
 
 <div id="datos">
-
     <div id="datos-gcoop">
       <div class="nombre-cooperativa"> {{cooperativa['nombre']}}</div>
         <div class="matricula-cooperativa">
@@ -28,7 +26,6 @@
         <div class="domicilio-cooperativa">
             <label>Domicilio</label> {{cooperativa['domicilio']}}
         </div>
-
     </div>
 
     <div id="datos-asociado">
@@ -37,15 +34,13 @@
         <div class="domicilio-asociado"><label>Domicilio</label> {{retiro.socio.domicilio}}</div>
         <div class="cuit-asociado"><label>CUIT N°</label> {{retiro.socio.cuit}}</div>
         <div class="dni-asociado"><label>DNI N°</label> {{retiro.socio.dni}}</div>
-
     </div>
-
 </div>
 
 <div id="firma">
 <!-- <p class="linea-punteada">&#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226;</p> -->
-<p>Recibí conforme la suma de Pesos <strong>{{monto_como_cadena }}</strong> en concepto de <strong>{{retiro.concepto}}</strong> por mi aporte como trabajador asociado.</p>
-
+<p>Recibí conforme la suma de Pesos <strong>{{monto_como_cadena }}</strong> en concepto de:
+    <strong><pre>{{retiro.concepto}}</pre></strong></p>
     <div id="monto-fecha">
     <div class="monto"><label>Son $</label> {{retiro.monto}}</div>
     <div class="lugar-fecha"><label>Lugar y fecha</label> {{cooperativa['lugar_firma']}} {{retiro.fecha}}</div>

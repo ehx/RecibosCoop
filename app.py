@@ -68,9 +68,6 @@ def importar():
     socios = u"\n".join([x + u" → " for x in obtener_lista_de_socios()])
     return render_template("importar.html", form=form, socios=socios, menu=menu(1))
 
-
-
-
 @app.route("/pdf/<retiro_id>")
 @auth.login_required
 @to_pdf()
@@ -181,7 +178,7 @@ def obtener_retiros():
     if indice_columna_ordenamiento > 0:
         columnas = {
                 1: 'apellido',
-		2: 'numero',
+		        2: 'numero',
                 3: 'fecha',
                 4: 'monto',
                 }

@@ -121,7 +121,8 @@ $(document).ready(function() {
 
 
   $(".opcion_dropdown").click(function(e, target) {
-    $("#concepto").val($(this).text());
+		var ant = $("#concepto").val();
+		$("#concepto").val(ant + $(this).text() + '\n');
   });
 
 
@@ -173,7 +174,6 @@ $(document).ready(function() {
       </td>
     </tr>
 
-
     <tr>
       <td width="300px">
         Personas
@@ -203,3 +203,4 @@ $(document).ready(function() {
 </form>
 
 {% endblock %}
+

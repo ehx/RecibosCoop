@@ -47,8 +47,11 @@ class Retiro(db.Model):
 
     def save(self):
         # TODO Aoregar UNIQUE de numero
-        for n in Retiro.select().order_by(('numero', 'desc')).limit(1):
-            self.numero = n.numero + 1
+        ultimo = list(Retiro.select('numero').order_by(('numero', 'desc')).limit(1))
+        if any(ultimo):
+            self.numero = ultimo[0].numero + 1
+        else:
+            self.numero = 1
         return db.Model.save(self)
 
     @classmethod
